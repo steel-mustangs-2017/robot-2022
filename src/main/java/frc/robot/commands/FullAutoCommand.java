@@ -64,11 +64,11 @@ public class FullAutoCommand extends CommandBase {
     //aimShooter();
   
     if(shooterSubsystem.AtShootVelocity() ){
-      shooterSubsystem.Shoot(1);
+      shooterSubsystem.ShootHigh(speed);
       indexerSubsystem.RunIndex();
     }
     else{
-      shooterSubsystem.Shoot(1);
+      shooterSubsystem.ShootHigh(speed);
       indexerSubsystem.StopIndex();
       
     }

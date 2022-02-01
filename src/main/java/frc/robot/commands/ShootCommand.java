@@ -34,8 +34,12 @@ public class ShootCommand extends CommandBase {
   public void execute() {
     super.execute();
     speed = operatorController.getRawAxis(ControllerConstants.SHOOT_AXIS_2_ID);
-    shooterSubsystem.Shoot(speed);
+    if(speed>.1){
+    speed = 0.3;
+    }
+    shooterSubsystem.ShootHigh(speed);
   }
+
 
   // Called once the command ends or is interrupted.
   @Override

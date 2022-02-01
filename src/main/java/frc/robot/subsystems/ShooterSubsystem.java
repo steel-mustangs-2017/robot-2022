@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 
@@ -27,6 +28,8 @@ public class ShooterSubsystem extends SubsystemBase {
   shooterMotor.setInverted(true);
   shooterMotorSlave.setInverted(false);
   
+  shooterMotor.setNeutralMode(NeutralMode.Coast);
+  shooterMotorSlave.setNeutralMode(NeutralMode.Coast);
   }
 
   @Override
@@ -36,9 +39,17 @@ public class ShooterSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void Shoot(double speed){
+  public void ShootHigh(double speed){
     shooterMotor.set(speed);
     shooterMotorSlave.set(speed);
+    if(AtShootVelocity()){
+      System.out.println("SHOOT");
+    }
+    
+  }
+  public void Shootlow(double speed){
+    shooterMotor.set(speed/10);
+    shooterMotorSlave.set(speed/10);
     if(AtShootVelocity()){
       System.out.println("SHOOT");
     }
